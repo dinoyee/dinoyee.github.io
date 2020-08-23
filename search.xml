@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
+    <title>Docker 我也會 (1)</title>
     <url>/2020/08/05/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<p>Docker 是什麼？</p>
+<a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h1 id="Docker-是什麼"><a href="#Docker-是什麼" class="headerlink" title="Docker 是什麼"></a>Docker 是什麼</h1><h2 id="The-Modern-Platform-for-High-Velocity-Innovation"><a href="#The-Modern-Platform-for-High-Velocity-Innovation" class="headerlink" title="The Modern Platform for High-Velocity Innovation"></a>The Modern Platform for High-Velocity Innovation</h2><p>高速創新的現代平台</p>
+<h2 id="Only-independent-container-platform-that-enables-organizations-to-seamlessly-build-share-and-run-any-application-anywhere—from-hybrid-cloud-to-the-edge"><a href="#Only-independent-container-platform-that-enables-organizations-to-seamlessly-build-share-and-run-any-application-anywhere—from-hybrid-cloud-to-the-edge" class="headerlink" title="Only independent container platform that enables organizations to seamlessly build, share and run any application, anywhere—from hybrid cloud to the edge."></a>Only independent container platform that enables organizations to seamlessly build, share and run any application, anywhere—from hybrid cloud to the edge.</h2><p>獨立的容器平台能使組織無縫的去建立、分享、運行任何應用，從混合雲到邊緣</p>
+<hr>
+<h1 id="怎麼理解-docker"><a href="#怎麼理解-docker" class="headerlink" title="怎麼理解 docker"></a>怎麼理解 docker</h1><h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><p>映像檔<br>一個映像檔可以存放軟體應用，或是完整的作業系統軟體，映像檔可以來建立容器</p>
+<h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><p>容器<br>容器是從映像檔建立，可視為簡易的 Linux 環境和在裡面執行的軟體應用</p>
+<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><p>庫<br>庫為存放映像檔檔案的集中地，最大的公開倉庫為 Docker Hub ，也可以自行建立私有倉庫</p>
+<hr>
+<h1 id="起手式"><a href="#起手式" class="headerlink" title="起手式"></a>起手式</h1><h2 id="公用"><a href="#公用" class="headerlink" title="公用"></a>公用</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 查看版本</span><br><span class="line">docker -v</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 幫助</span><br><span class="line">docker --help</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 某個指令的幫助</span><br><span class="line">docker &#123;COMMAND&#125; --help</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2 id="Image-1"><a href="#Image-1" class="headerlink" title="Image"></a>Image</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 取得Image</span><br><span class="line">docker pull &#123;IMAGE&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 列出Image列表</span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 刪除Image</span><br><span class="line">docker rmi &#123;IMAGE ID&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="Container-1"><a href="#Container-1" class="headerlink" title="Container"></a>Container</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 運行容器</span><br><span class="line">docker run &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器在後台以守護進程的形式</span><br><span class="line">docker run -d &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並加以命名</span><br><span class="line">docker run --name &#123;NAME&#125; &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並掛載目錄為資料卷</span><br><span class="line">docker run -v &#123;LOCAL PATH&#125;:&#123;CONTAINER PATH&#125; &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並建立連接埠映射</span><br><span class="line">docker run -p &#123;LOCAL PORT&#125;:&#123;CONTAINER PORT&#125; &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並互聯其他容器</span><br><span class="line">docker run --link &#123;CONTAINER ID or NAMES&#125;:&#123;ALIAS&#125; &#123;IMAGE&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 顯示運行中容器狀態</span><br><span class="line">docker ps</span><br><span class="line">&#x2F;&#x2F; 顯示所有容器狀態</span><br><span class="line">docker ps -a</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 進入容器</span><br><span class="line">docker exec -it &#123;CONTAINER ID or NAMES&#125; bash</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 啟動容器</span><br><span class="line">docker start &#123;CONTAINER ID or NAMES&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 重新啟動容器</span><br><span class="line">docker restart &#123;CONTAINER ID or NAMES&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 停止容器</span><br><span class="line">docker stop &#123;CONTAINER ID or NAMES&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 刪除容器</span><br><span class="line">docker rm &#123;CONTAINER ID or NAMES&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+<blockquote>
+<p>Ｗhy Docker? <a href="https://www.docker.com/why-docker">Why Docker? | Docker</a></p>
+</blockquote>
 ]]></content>
   </entry>
 </search>

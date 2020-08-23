@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"dinoyee.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="Docker 是什麼？">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
+<meta property="og:title" content="Docker 我也會 (1)">
 <meta property="og:url" content="https://dinoyee.github.io/2020/08/05/hello-world/index.html">
 <meta property="og:site_name" content="Dinoyee blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Docker 是什麼？">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2020-08-04T17:51:00.000Z">
-<meta property="article:modified_time" content="2020-08-05T16:01:51.271Z">
+<meta property="article:modified_time" content="2020-08-23T16:32:22.603Z">
 <meta property="article:author" content="dinoyee">
 <meta name="twitter:card" content="summary">
 
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>Hello World | Dinoyee blog</title>
+  <title>Docker 我也會 (1) | Dinoyee blog</title>
   
 
 
@@ -191,7 +191,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          Docker 我也會 (1)
         </h1>
 
         <div class="post-meta">
@@ -208,7 +208,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-08-06 00:01:51" itemprop="dateModified" datetime="2020-08-06T00:01:51+08:00">2020-08-06</time>
+                <time title="修改時間：2020-08-24 00:32:22" itemprop="dateModified" datetime="2020-08-24T00:32:22+08:00">2020-08-24</time>
               </span>
 
           <br>
@@ -216,13 +216,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>367</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="所需閱讀時間">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>1 分鐘</span>
+              <span>3 分鐘</span>
             </span>
 
         </div>
@@ -234,19 +234,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+        <p>Docker 是什麼？</p>
+<a id="more"></a>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h1 id="Docker-是什麼"><a href="#Docker-是什麼" class="headerlink" title="Docker 是什麼"></a>Docker 是什麼</h1><h2 id="The-Modern-Platform-for-High-Velocity-Innovation"><a href="#The-Modern-Platform-for-High-Velocity-Innovation" class="headerlink" title="The Modern Platform for High-Velocity Innovation"></a>The Modern Platform for High-Velocity Innovation</h2><p>高速創新的現代平台</p>
+<h2 id="Only-independent-container-platform-that-enables-organizations-to-seamlessly-build-share-and-run-any-application-anywhere—from-hybrid-cloud-to-the-edge"><a href="#Only-independent-container-platform-that-enables-organizations-to-seamlessly-build-share-and-run-any-application-anywhere—from-hybrid-cloud-to-the-edge" class="headerlink" title="Only independent container platform that enables organizations to seamlessly build, share and run any application, anywhere—from hybrid cloud to the edge."></a>Only independent container platform that enables organizations to seamlessly build, share and run any application, anywhere—from hybrid cloud to the edge.</h2><p>獨立的容器平台能使組織無縫的去建立、分享、運行任何應用，從混合雲到邊緣</p>
+<hr>
+<h1 id="怎麼理解-docker"><a href="#怎麼理解-docker" class="headerlink" title="怎麼理解 docker"></a>怎麼理解 docker</h1><h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><p>映像檔<br>一個映像檔可以存放軟體應用，或是完整的作業系統軟體，映像檔可以來建立容器</p>
+<h2 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h2><p>容器<br>容器是從映像檔建立，可視為簡易的 Linux 環境和在裡面執行的軟體應用</p>
+<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><p>庫<br>庫為存放映像檔檔案的集中地，最大的公開倉庫為 Docker Hub ，也可以自行建立私有倉庫</p>
+<hr>
+<h1 id="起手式"><a href="#起手式" class="headerlink" title="起手式"></a>起手式</h1><h2 id="公用"><a href="#公用" class="headerlink" title="公用"></a>公用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 查看版本</span><br><span class="line">docker -v</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 幫助</span><br><span class="line">docker --help</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 某個指令的幫助</span><br><span class="line">docker &#123;COMMAND&#125; --help</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h2 id="Image-1"><a href="#Image-1" class="headerlink" title="Image"></a>Image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 取得Image</span><br><span class="line">docker pull &#123;IMAGE&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 列出Image列表</span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 刪除Image</span><br><span class="line">docker rmi &#123;IMAGE ID&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h2 id="Container-1"><a href="#Container-1" class="headerlink" title="Container"></a>Container</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 運行容器</span><br><span class="line">docker run &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器在後台以守護進程的形式</span><br><span class="line">docker run -d &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並加以命名</span><br><span class="line">docker run --name &#123;NAME&#125; &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並掛載目錄為資料卷</span><br><span class="line">docker run -v &#123;LOCAL PATH&#125;:&#123;CONTAINER PATH&#125; &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並建立連接埠映射</span><br><span class="line">docker run -p &#123;LOCAL PORT&#125;:&#123;CONTAINER PORT&#125; &#123;IMAGE&#125;</span><br><span class="line">&#x2F;&#x2F; 運行容器並互聯其他容器</span><br><span class="line">docker run --link &#123;CONTAINER ID or NAMES&#125;:&#123;ALIAS&#125; &#123;IMAGE&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 顯示運行中容器狀態</span><br><span class="line">docker ps</span><br><span class="line">&#x2F;&#x2F; 顯示所有容器狀態</span><br><span class="line">docker ps -a</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 進入容器</span><br><span class="line">docker exec -it &#123;CONTAINER ID or NAMES&#125; bash</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 啟動容器</span><br><span class="line">docker start &#123;CONTAINER ID or NAMES&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 重新啟動容器</span><br><span class="line">docker restart &#123;CONTAINER ID or NAMES&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 停止容器</span><br><span class="line">docker stop &#123;CONTAINER ID or NAMES&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 刪除容器</span><br><span class="line">docker rm &#123;CONTAINER ID or NAMES&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+<blockquote>
+<p>Ｗhy Docker? <a target="_blank" rel="noopener" href="https://www.docker.com/why-docker">Why Docker? | Docker</a></p>
+</blockquote>
 
     </div>
 
@@ -317,7 +324,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker-%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="nav-number">1.</span> <span class="nav-text">Docker 是什麼</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Modern-Platform-for-High-Velocity-Innovation"><span class="nav-number">1.1.</span> <span class="nav-text">The Modern Platform for High-Velocity Innovation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Only-independent-container-platform-that-enables-organizations-to-seamlessly-build-share-and-run-any-application-anywhere%E2%80%94from-hybrid-cloud-to-the-edge"><span class="nav-number">1.2.</span> <span class="nav-text">Only independent container platform that enables organizations to seamlessly build, share and run any application, anywhere—from hybrid cloud to the edge.</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%8E%E9%BA%BC%E7%90%86%E8%A7%A3-docker"><span class="nav-number">2.</span> <span class="nav-text">怎麼理解 docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Image"><span class="nav-number">2.1.</span> <span class="nav-text">Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container"><span class="nav-number">2.2.</span> <span class="nav-text">Container</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Repository"><span class="nav-number">2.3.</span> <span class="nav-text">Repository</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%B7%E6%89%8B%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">起手式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AC%E7%94%A8"><span class="nav-number">3.1.</span> <span class="nav-text">公用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Image-1"><span class="nav-number">3.2.</span> <span class="nav-text">Image</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container-1"><span class="nav-number">3.3.</span> <span class="nav-text">Container</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -382,12 +389,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="總字數">0k</span>
+    <span title="總字數">2k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="所需總閱讀時間">1 分鐘</span>
+    <span title="所需總閱讀時間">3 分鐘</span>
 </div>
 
         
