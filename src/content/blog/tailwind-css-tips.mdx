@@ -1,0 +1,62 @@
+---
+title: "Tailwind CSS 實用技巧"
+description: "掌握 Tailwind CSS 的核心概念與實用技巧，提升前端開發效率。"
+date: 2026-04-25
+tags: ["tailwind", "css", "frontend"]
+draft: false
+---
+
+# Tailwind CSS 實用技巧
+
+Tailwind CSS 是一個 utility-first 的 CSS 框架，讓你直接在 HTML 中套用樣式。
+
+## 什麼是 Utility-First？
+
+Utility-first 意味著每個 class 只負責單一功能：
+
+```html
+<div class="bg-blue-500 text-white p-4 rounded-lg shadow-md">
+  這是一個樣式化的區塊
+</div>
+```
+
+## 常用技巧
+
+### 響應式設計
+
+Tailwind 內建 mobile-first 的響應式斷點：
+
+```html
+<div class="w-full md:w-1/2 lg:w-1/3">
+  根據螢幕寬度調整大小
+</div>
+```
+
+### Hover 與 Focus 狀態
+
+```html
+<button class="bg-green-500 hover:bg-green-600 focus:ring-2 focus:ring-green-300">
+  點擊按鈕
+</button>
+```
+
+### 自訂主題
+
+可以透過 `tailwind.config.js` 擴充預設主題：
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1a73e8',
+        secondary: '#34a853',
+      },
+    },
+  },
+}
+```
+
+## 總結
+
+Tailwind CSS 讓樣式開發變得更加直觀且容易維護，是現代前端專案的理想選擇。

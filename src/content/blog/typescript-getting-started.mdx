@@ -1,0 +1,46 @@
+---
+title: "TypeScript 入門指南"
+description: "從零開始學習 TypeScript 的基礎概念與實作技巧。"
+date: 2026-04-28
+tags: ["typescript", "javascript", "程式語言"]
+draft: false
+---
+
+# TypeScript 入門指南
+
+TypeScript 是 JavaScript 的超集，為程式碼帶來了型別系統與更好的開發體驗。
+
+## 為什麼要使用 TypeScript？
+
+1. **型別安全** — 在編譯時期就能發現錯誤
+2. **IDE 支援** — 更好的自動補齊與重構功能
+3. **程式碼可讀性** — 明確的型別宣告讓程式更容易理解
+
+## 基本型別
+
+```typescript
+// 基本型別
+let name: string = "DinoYee";
+let age: number = 25;
+let isActive: boolean = true;
+
+// 陣列型別
+let skills: string[] = ["TypeScript", "React", "Node.js"];
+
+// 物件型別
+interface User {
+  name: string;
+  age: number;
+  email?: string; // 選填欄位
+}
+```
+
+## 函式與型別
+
+```typescript
+function greet(user: User): string {
+  return `Hello, ${user.name}!`;
+}
+```
+
+TypeScript 的型別系統能有效減少執行時期的錯誤，是現代前端開發的必備技能。
