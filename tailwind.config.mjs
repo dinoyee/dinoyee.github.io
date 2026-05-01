@@ -76,20 +76,30 @@ export default {
             'a:hover': { textDecoration: 'underline' },
           },
         },
-        dark: {
+        invert: {
           css: {
             color: theme('colors.expo.on-dark-soft'),
             h1: { color: theme('colors.expo.on-dark') },
             h2: { color: theme('colors.expo.on-dark') },
             h3: { color: theme('colors.expo.on-dark') },
             h4: { color: theme('colors.expo.on-dark') },
+            strong: { color: theme('colors.expo.on-dark') },
+            a: { color: theme('colors.expo.accent-link-bright') },
             code: {
               color: theme('colors.expo.on-dark'),
               backgroundColor: theme('colors.expo.surface-dark-elevated'),
             },
-            strong: { color: theme('colors.expo.on-dark') },
-            'pre code': { color: theme('colors.expo.on-dark') },
-            a: { color: theme('colors.expo.accent-link-bright') },
+            'pre code': {
+              color: theme('colors.expo.on-dark'),
+              backgroundColor: 'transparent',
+            },
+            pre: {
+              backgroundColor: theme('colors.expo.surface-dark-elevated'),
+            },
+            blockquote: {
+              borderLeftColor: theme('colors.expo.surface-dark-elevated'),
+            },
+            hr: { borderColor: theme('colors.expo.surface-dark-elevated') },
           },
         },
       }),
