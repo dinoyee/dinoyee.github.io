@@ -40,19 +40,11 @@
 
 @layer components {
   .expo-btn-primary {
-    @apply bg-expo-black text-expo-on-primary rounded-md px-4.5 py-2.5 font-medium text-button transition-colors;
-  }
-
-  .expo-btn-primary:hover {
-    @apply bg-expo-black-active;
+    @apply bg-expo-black text-expo-on-primary rounded-md px-[18px] py-2.5 font-medium text-button transition-all hover:bg-expo-black-active hover:no-underline inline-flex items-center justify-center;
   }
 
   .expo-btn-secondary {
-    @apply bg-expo-surface-card text-expo-ink border border-expo-hairline-strong rounded-md px-4.5 py-2.5 font-medium text-button transition-colors;
-  }
-
-  .expo-btn-secondary:hover {
-    @apply bg-expo-canvas-soft;
+    @apply bg-expo-surface-card text-expo-ink border border-expo-hairline-strong rounded-md px-[18px] py-2.5 font-medium text-button transition-all hover:bg-expo-canvas-soft inline-flex items-center justify-center;
   }
 
   .expo-card {
