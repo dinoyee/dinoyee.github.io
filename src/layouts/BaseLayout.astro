@@ -56,36 +56,46 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
       (function() {
         function initCodeBlocks() {
           document.querySelectorAll('pre').forEach(function(pre) {
-            // Skip if header already exists
             if (pre.querySelector('.code-header')) return;
             
             var code = pre.querySelector('code');
             var lang = 'CODE';
 
-            // Check classes on both pre and code elements for 'language-xxx' or 'lang-xxx'
-            var preClass = pre.getAttribute('class') || '';
-            var codeClass = code ? (code.getAttribute('class') || '') : '';
-            var allClasses = preClass + ' ' + codeClass;
-            
-            var match = allClasses.match(/(?:language|lang)-([a-zA-Z0-9_-]+)/);
-            
-            if (match) {
-              // Convert e.g. "objective-c" to "OBJECTIVE C"
-              lang = match[1].replace(/[-_]/g, ' ').toUpperCase();
+            // Collect all classes from pre and code
+            var classes = [];
+            if (pre.className) classes = pre.className.split(/\s+/);
+            if (code && code.className) classes = classes.concat(code.className.split(/\s+/));
+
+            // 1. Check for data-language attribute (common in Shiki/Astro)
+            if (pre.dataset.language) {
+              lang = pre.dataset.language;
+            } 
+            // 2. Check for classes like language-xxx, lang-xxx, astro-code-xxx
+            else {
+              var match = classes.find(function(cls) {
+                return cls.startsWith('language-') || 
+                       cls.startsWith('lang-') || 
+                       cls.startsWith('astro-code-');
+              });
+              
+              if (match) {
+                lang = match.replace('language-', '').replace('lang-', '').replace('astro-code-', '');
+              }
             }
+
+            // Clean up and format
+            lang = lang.replace(/[-_]/g, ' ').toUpperCase();
 
             var header = document.createElement('div');
             header.className = 'code-header';
             header.innerHTML = '<span class="lang">' + lang + '</span>' +
                                '<button class="copy-btn" aria-label="Copy code"><span>Copy</span></button>';
             
-            // Insert header at the beginning of the pre block
             pre.insertBefore(header, pre.firstChild);
 
             var btn = header.querySelector('.copy-btn');
             btn.addEventListener('click', function() {
               if (navigator.clipboard) {
-                // Copy text content from the code element
                 var textToCopy = code ? code.innerText : pre.innerText;
                 navigator.clipboard.writeText(textToCopy).then(function() {
                   var span = btn.querySelector('span');
