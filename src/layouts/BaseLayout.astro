@@ -55,32 +55,46 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
     <script is:inline>
       (function() {
         function initCodeBlocks() {
-          document.querySelectorAll('pre.shiki').forEach(function(pre) {
-            if (pre.querySelector('.code-header')) return;
+          // Select all pre elements that contain code (typical markdown output)
+          document.querySelectorAll('pre').forEach(function(pre) {
+            // Skip if already processed or empty
+            if (pre.querySelector('.code-header') || !pre.querySelector('code')) return;
             
             var code = pre.querySelector('code');
-            if (!code) return;
+            var lang = 'CODE';
 
+            // Check for class like language-typescript
             var match = code.className.match(/language-(\w+)/);
-            var lang = match ? match[1].toUpperCase() : 'CODE';
+            if (match) {
+              lang = match[1].toUpperCase();
+            } else if (pre.className.match(/language-(\w+)/)) {
+              // Sometimes class is on the pre itself
+              lang = pre.className.match(/language-(\w+)/)[1].toUpperCase();
+            }
 
             var header = document.createElement('div');
             header.className = 'code-header';
             header.innerHTML = '<span class="lang">' + lang + '</span>' +
-                               '<button class="copy-btn"><span>Copy</span></button>';
+                               '<button class="copy-btn" aria-label="Copy code"><span>Copy</span></button>';
             
-            pre.appendChild(header);
+            pre.insertBefore(header, pre.firstChild);
 
             var btn = header.querySelector('.copy-btn');
             btn.addEventListener('click', function() {
               if (navigator.clipboard) {
-                navigator.clipboard.writeText(code.innerText).then(function() {
+                // Get text content but avoid copying the button text if it were inside code (unlikely here)
+                // A safer way is to get text from code element
+                var textToCopy = code ? code.innerText : pre.innerText;
+                
+                navigator.clipboard.writeText(textToCopy).then(function() {
                   var span = btn.querySelector('span');
                   var original = span.textContent;
                   span.textContent = 'Copied!';
                   setTimeout(function() {
                     span.textContent = original;
                   }, 2000);
+                }).catch(function(err) {
+                  console.error('Failed to copy: ', err);
                 });
               }
             });
