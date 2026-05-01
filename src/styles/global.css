@@ -4,35 +4,54 @@
 
 @layer base {
   html {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: 'SF Pro Text', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-apple-parchment text-apple-ink font-body text-apple-body;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    @apply font-display font-semibold tracking-tight text-apple-ink;
   }
 
-  h1 { @apply text-3xl md:text-4xl; }
-  h2 { @apply text-2xl md:text-3xl; }
-  h3 { @apply text-xl md:text-2xl; }
+  h1 { @apply text-display-lg; }
+  h2 { @apply text-display-md; }
+  h3 { @apply text-lead; }
 
   a {
-    @apply text-blue-600 hover:text-blue-800 hover:underline;
+    @apply text-apple-blue hover:underline;
+  }
+
+  a:hover {
+    color: #0071e3;
   }
 
   code {
-    @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono;
+    @apply bg-apple-parchment px-1.5 py-0.5 rounded text-caption font-mono text-apple-ink;
   }
 
   pre {
-    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto;
+    @apply bg-apple-surface-black text-white p-6 rounded-lg overflow-x-auto;
   }
 
   pre code {
-    @apply bg-transparent p-0 text-sm;
+    @apply bg-transparent p-0 text-sm font-mono;
+  }
+}
+
+@layer components {
+  .apple-btn-primary {
+    @apply bg-apple-blue text-white rounded-pill px-5.5 py-3 font-medium text-button-lg transition-transform active:scale-95;
+  }
+
+  .apple-btn-secondary {
+    @apply text-apple-blue border border-apple-blue rounded-pill px-5.5 py-3 font-medium hover:bg-apple-blue hover:text-white transition-colors;
+  }
+
+  .nav-link {
+    @apply text-apple-ink text-nav no-underline hover:text-apple-blue transition-colors;
   }
 }

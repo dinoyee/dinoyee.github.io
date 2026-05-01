@@ -15,31 +15,24 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | DinoYee Blog</title>
-    <style>
-      :root {
-        --astro-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      }
-    </style>
   </head>
-  <body class="min-h-screen flex flex-col">
-    <header class="border-b border-gray-200">
-      <nav class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="text-xl font-bold text-gray-900 no-underline hover:text-gray-700">
-          DinoYee
-        </a>
-        <div class="flex gap-4 text-sm">
-          <a href="/" class="no-underline hover:text-blue-600">首頁</a>
-          <a href="/blog" class="no-underline hover:text-blue-600">部落格</a>
-        </div>
-      </nav>
-    </header>
+  <body class="bg-apple-canvas text-apple-ink">
+    <nav class="bg-apple-surface-black h-11 px-6 flex items-center justify-between sticky top-0 z-50">
+      <a href="/" class="text-white font-semibold text-nav hover:text-apple-blue-dark transition-colors no-underline">
+        DinoYee
+      </a>
+      <div class="flex gap-6">
+        <a href="/" class="text-white text-nav hover:text-apple-blue-dark transition-colors no-underline">首頁</a>
+        <a href="/blog" class="text-white text-nav hover:text-apple-blue-dark transition-colors no-underline">部落格</a>
+      </div>
+    </nav>
 
-    <main class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+    <main class="min-h-screen flex flex-col items-center py-section px-4">
       <slot />
     </main>
 
-    <footer class="border-t border-gray-200 mt-12">
-      <div class="max-w-3xl mx-auto px-4 py-4 text-sm text-gray-500 text-center">
+    <footer class="bg-apple-parchment py-section px-6 border-t border-apple-hairline">
+      <div class="max-w-3xl mx-auto text-center text-fine-print text-apple-ink-muted-48">
         © {new Date().getFullYear()} DinoYee. All rights reserved.
       </div>
     </footer>
