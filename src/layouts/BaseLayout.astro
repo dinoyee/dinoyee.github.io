@@ -55,21 +55,23 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
     <script is:inline>
       (function() {
         function initCodeBlocks() {
-          // Select all pre elements that contain code (typical markdown output)
           document.querySelectorAll('pre').forEach(function(pre) {
-            // Skip if already processed or empty
-            if (pre.querySelector('.code-header') || !pre.querySelector('code')) return;
+            // Skip if header already exists
+            if (pre.querySelector('.code-header')) return;
             
             var code = pre.querySelector('code');
             var lang = 'CODE';
 
-            // Check for class like language-typescript
-            var match = code.className.match(/language-(\w+)/);
+            // Check classes on both pre and code elements for 'language-xxx' or 'lang-xxx'
+            var preClass = pre.getAttribute('class') || '';
+            var codeClass = code ? (code.getAttribute('class') || '') : '';
+            var allClasses = preClass + ' ' + codeClass;
+            
+            var match = allClasses.match(/(?:language|lang)-([a-zA-Z0-9_-]+)/);
+            
             if (match) {
-              lang = match[1].toUpperCase();
-            } else if (pre.className.match(/language-(\w+)/)) {
-              // Sometimes class is on the pre itself
-              lang = pre.className.match(/language-(\w+)/)[1].toUpperCase();
+              // Convert e.g. "objective-c" to "OBJECTIVE C"
+              lang = match[1].replace(/[-_]/g, ' ').toUpperCase();
             }
 
             var header = document.createElement('div');
@@ -77,15 +79,14 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
             header.innerHTML = '<span class="lang">' + lang + '</span>' +
                                '<button class="copy-btn" aria-label="Copy code"><span>Copy</span></button>';
             
+            // Insert header at the beginning of the pre block
             pre.insertBefore(header, pre.firstChild);
 
             var btn = header.querySelector('.copy-btn');
             btn.addEventListener('click', function() {
               if (navigator.clipboard) {
-                // Get text content but avoid copying the button text if it were inside code (unlikely here)
-                // A safer way is to get text from code element
+                // Copy text content from the code element
                 var textToCopy = code ? code.innerText : pre.innerText;
-                
                 navigator.clipboard.writeText(textToCopy).then(function() {
                   var span = btn.querySelector('span');
                   var original = span.textContent;
