@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'A personal blog by DinoYee' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | DinoYee Blog</title>
+    <style>
+      :root {
+        --astro-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-gray-200">
+      <nav class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="/" class="text-xl font-bold text-gray-900 no-underline hover:text-gray-700">
+          DinoYee
+        </a>
+        <div class="flex gap-4 text-sm">
+          <a href="/" class="no-underline hover:text-blue-600">首頁</a>
+          <a href="/blog" class="no-underline hover:text-blue-600">部落格</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-1 max-w-3xl mx-auto px-4 py-8 w-full">
+      <slot />
+    </main>
+
+    <footer class="border-t border-gray-200 mt-12">
+      <div class="max-w-3xl mx-auto px-4 py-4 text-sm text-gray-500 text-center">
+        © {new Date().getFullYear()} DinoYee. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>
