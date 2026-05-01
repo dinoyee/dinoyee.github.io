@@ -1,0 +1,69 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const tagMap = new Map<string, typeof posts>();
+
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    if (!tagMap.has(tag)) {
+      tagMap.set(tag, []);
+    }
+    tagMap.get(tag)!.push(post);
+  }
+}
+
+const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1].length - a[1].length);
+---
+
+<BaseLayout title="分類" description="瀏覽所有文章分類">
+  <header class="text-center space-y-3 mb-16">
+    <h1 class="text-display-lg">分類</h1>
+    <p class="text-lead text-apple-ink-muted-80">
+      {sortedTags.length} 個分類，共 {posts.length} 篇文章
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl mb-16">
+    {sortedTags.map(([tag, tagPosts]) => (
+      <a
+        href={`/tags/${tag}`}
+        class="bg-white rounded-lg border border-apple-hairline p-6 flex flex-col hover:shadow-sm transition-shadow no-underline"
+      >
+        <h2 class="text-tagline text-apple-ink mb-2">{tag}</h2>
+        <p class="text-body text-apple-ink-muted-80 mb-4">{tagPosts.length} 篇文章</p>
+        <div class="flex flex-wrap gap-2">
+          {tagPosts.slice(0, 3).map(post => (
+            <span key={post.slug} class="text-[10px] px-2 py-1 bg-apple-parchment text-apple-ink-muted-80 rounded-full truncate max-w-[150px]">
+              {post.data.title}
+            </span>
+          ))}
+          {tagPosts.length > 3 && (
+            <span class="text-[10px] px-2 py-1 bg-apple-parchment text-apple-blue rounded-full">
+              +{tagPosts.length - 3}
+            </span>
+          )}
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="w-full max-w-5xl">
+    <h2 class="text-display-md mb-8">所有標籤</h2>
+    <div class="flex flex-wrap gap-3">
+      {sortedTags.map(([tag, tagPosts]) => (
+        <a
+          href={`/tags/${tag}`}
+          class="px-4 py-2 bg-white border border-apple-hairline rounded-pill text-body-strong text-apple-ink no-underline hover:bg-apple-blue hover:text-white hover:border-apple-blue transition-colors"
+        >
+          {tag}
+          <span class="ml-1 text-apple-ink-muted-48 group-hover:text-white/60">({tagPosts.length})</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

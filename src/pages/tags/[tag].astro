@@ -1,0 +1,71 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getCollection('blog');
+  const tags = new Set<string>();
+  
+  for (const post of posts) {
+    for (const tag of post.data.tags || []) {
+      tags.add(tag);
+    }
+  }
+
+  return Array.from(tags).map(tag => ({
+    params: { tag },
+  }));
+};
+
+const { tag } = Astro.params;
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft && p.data.tags.includes(tag))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title={`分類：${tag}`} description={`瀏覽「${tag}」分類的所有文章`}>
+  <header class="text-center space-y-3 mb-16">
+    <div class="flex items-center justify-center gap-3">
+      <span class="text-tagline text-apple-ink-muted-48">分類</span>
+      <h1 class="text-display-lg inline">{tag}</h1>
+    </div>
+    <p class="text-lead text-apple-ink-muted-80">{posts.length} 篇文章</p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+    {posts.map(post => (
+      <article class="bg-white rounded-lg border border-apple-hairline p-6 flex flex-col hover:shadow-sm transition-shadow">
+        <div class="flex-1">
+          <time class="text-caption text-apple-ink-muted-48">
+            {post.data.date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <h2 class="text-lead mt-2 mb-3 leading-tight">
+            <a href={`/blog/${post.slug}`} class="no-underline hover:text-apple-blue">
+              {post.data.title}
+            </a>
+          </h2>
+          <p class="text-body text-apple-ink-muted-80">{post.data.description}</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-apple-divider">
+          <a href={`/blog/${post.slug}`} class="text-apple-blue no-underline font-medium hover:underline">
+            閱讀更多 &rarr;
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  {posts.length === 0 && (
+    <div class="text-center py-16 text-apple-ink-muted-80 text-lead-airy">
+      此分類尚無文章
+    </div>
+  )}
+
+  <div class="mt-16 text-center">
+    <a href="/tags" class="nav-link no-underline">
+      &larr; 回到分類列表
+    </a>
+  </div>
+</BaseLayout>
