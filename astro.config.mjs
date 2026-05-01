@@ -5,7 +5,6 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   site: 'https://dinoyee.github.io',
-  base: '/dinoyee-blog',
   output: 'static',
   integrations: [react(), mdx(), tailwind()],
 });
