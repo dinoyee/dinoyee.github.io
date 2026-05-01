@@ -22,8 +22,8 @@ const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1].length - a[1
 
 <BaseLayout title="分類" description="瀏覽所有文章分類">
   <header class="text-center space-y-4 mb-16">
-    <h1 class="text-display-xl text-expo-ink">分類</h1>
-    <p class="text-body-md text-expo-body">
+    <h1 class="text-display-xl text-expo-ink dark:text-expo-on-dark transition-colors duration-200">分類</h1>
+    <p class="text-body-md text-expo-body dark:text-expo-on-dark-soft transition-colors duration-200">
       {sortedTags.length} 個分類，共 {posts.length} 篇文章
     </p>
   </header>
@@ -32,18 +32,18 @@ const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1].length - a[1
     {sortedTags.map(([tag, tagPosts]) => (
       <a
         href={`/tags/${tag}`}
-        class="expo-card expo-card-hover flex flex-col h-full no-underline"
+        class="expo-card expo-card-hover flex flex-col h-full no-underline dark:bg-expo-surface-dark-elevated dark:border-expo-surface-dark-elevated transition-colors duration-200"
       >
-        <h2 class="text-title-md text-expo-ink mb-2">{tag}</h2>
-        <p class="text-body-sm text-expo-muted mb-4">{tagPosts.length} 篇文章</p>
+        <h2 class="text-title-md text-expo-ink mb-2 dark:text-expo-on-dark transition-colors duration-200">{tag}</h2>
+        <p class="text-body-sm text-expo-muted mb-4 dark:text-expo-on-dark-soft/60 transition-colors duration-200">{tagPosts.length} 篇文章</p>
         <div class="flex flex-wrap gap-2">
           {tagPosts.slice(0, 3).map(post => (
-            <span key={post.slug} class="text-[11px] px-2 py-1 bg-expo-canvas-soft text-expo-body rounded-full truncate max-w-[150px]">
+            <span key={post.slug} class="text-[11px] px-2 py-1 bg-expo-canvas-soft text-expo-body rounded-full truncate max-w-[150px] dark:bg-expo-surface-strong/10 dark:text-expo-on-dark-soft/80 transition-colors duration-200">
               {post.data.title}
             </span>
           ))}
           {tagPosts.length > 3 && (
-            <span class="text-[11px] px-2 py-1 bg-expo-canvas-soft text-expo-text-link rounded-full">
+            <span class="text-[11px] px-2 py-1 bg-expo-canvas-soft text-expo-text-link rounded-full dark:bg-expo-surface-strong/10 dark:text-expo-accent-link-bright transition-colors duration-200">
               +{tagPosts.length - 3}
             </span>
           )}
@@ -53,15 +53,15 @@ const sortedTags = Array.from(tagMap.entries()).sort((a, b) => b[1].length - a[1
   </div>
 
   <div class="w-full max-w-5xl">
-    <h2 class="text-display-md text-expo-ink mb-8">所有標籤</h2>
+    <h2 class="text-display-md text-expo-ink mb-8 dark:text-expo-on-dark transition-colors duration-200">所有標籤</h2>
     <div class="flex flex-wrap gap-3">
       {sortedTags.map(([tag, tagPosts]) => (
         <a
           href={`/tags/${tag}`}
-          class="expo-btn-secondary no-underline"
+          class="expo-btn-secondary no-underline dark:bg-expo-surface-dark-elevated dark:border-expo-surface-strong/50 dark:text-expo-on-dark hover:dark:bg-expo-surface-strong/20"
         >
           {tag}
-          <span class="ml-1 text-expo-muted-soft">({tagPosts.length})</span>
+          <span class="ml-1 text-expo-muted-soft dark:text-expo-on-dark-soft/60">({tagPosts.length})</span>
         </a>
       ))}
     </div>

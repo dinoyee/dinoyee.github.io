@@ -21,27 +21,27 @@ const { Content } = await post.render();
 
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="max-w-3xl w-full space-y-8">
-    <header class="text-center space-y-6 pb-8 border-b border-expo-hairline">
+    <header class="text-center space-y-6 pb-8 border-b border-expo-hairline dark:border-expo-surface-strong/50 transition-colors duration-200">
       <div class="flex items-center justify-center gap-2">
         {post.data.tags.map(tag => (
-          <a href={`/tags/${tag}`} class="expo-badge no-underline hover:bg-expo-hairline-strong transition-colors">
+          <a href={`/tags/${tag}`} class="expo-badge no-underline hover:bg-expo-hairline-strong transition-colors dark:bg-expo-surface-strong/20 dark:hover:bg-expo-surface-strong/40 dark:text-expo-on-dark-soft">
             {tag}
           </a>
         ))}
       </div>
-      <time class="text-caption text-expo-muted">
+      <time class="text-caption text-expo-muted dark:text-expo-on-dark-soft/60">
         {post.data.date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
       </time>
-      <h1 class="text-display-xl text-expo-ink leading-tight">{post.data.title}</h1>
-      <p class="text-body-md text-expo-body max-w-xl mx-auto">{post.data.description}</p>
+      <h1 class="text-display-xl text-expo-ink leading-tight dark:text-expo-on-dark transition-colors duration-200">{post.data.title}</h1>
+      <p class="text-body-md text-expo-body max-w-xl mx-auto dark:text-expo-on-dark-soft transition-colors duration-200">{post.data.description}</p>
     </header>
 
-    <div class="prose prose-expo max-w-none">
+    <div class="prose prose-expo max-w-none dark:prose-invert">
       <Content />
     </div>
 
-    <div class="pt-8 border-t border-expo-hairline flex justify-between items-center">
-      <a href="/blog" class="nav-link no-underline">
+    <div class="pt-8 border-t border-expo-hairline dark:border-expo-surface-strong/50 transition-colors duration-200 flex justify-between items-center">
+      <a href="/blog" class="nav-link no-underline dark:text-expo-on-dark-soft dark:hover:text-expo-on-dark">
         &larr; 回到部落格列表
       </a>
     </div>

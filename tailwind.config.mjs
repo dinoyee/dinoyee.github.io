@@ -2,16 +2,17 @@ import typography from '@tailwindcss/typography';
 
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
-      typography: {
+      typography: (theme) => ({
         DEFAULT: {
           css: {
             maxWidth: 'none',
-            color: '#60646c', // expo-body
+            color: theme('colors.expo.body'),
             h1: {
-              color: '#171717', // expo-ink
+              color: theme('colors.expo.ink'),
               fontWeight: '600',
               fontSize: '36px',
               lineHeight: '1.15',
@@ -20,7 +21,7 @@ export default {
               marginBottom: '0.5em',
             },
             h2: {
-              color: '#171717',
+              color: theme('colors.expo.ink'),
               fontWeight: '600',
               fontSize: '28px',
               lineHeight: '1.2',
@@ -29,7 +30,7 @@ export default {
               marginBottom: '0.5em',
             },
             h3: {
-              color: '#171717',
+              color: theme('colors.expo.ink'),
               fontWeight: '600',
               fontSize: '22px',
               lineHeight: '1.25',
@@ -38,7 +39,7 @@ export default {
               marginBottom: '0.5em',
             },
             h4: {
-              color: '#171717',
+              color: theme('colors.expo.ink'),
               fontWeight: '600',
               fontSize: '18px',
               lineHeight: '1.4',
@@ -46,19 +47,15 @@ export default {
               marginBottom: '0.5em',
             },
             code: {
-              color: '#171717',
+              color: theme('colors.expo.ink'),
               fontWeight: '400',
-              backgroundColor: '#f0f0f3', // expo-surface-strong
+              backgroundColor: theme('colors.expo.surface-strong'),
               borderRadius: '4px',
               padding: '0.2em 0.4em',
               fontSize: '13px',
             },
-            'code::before': {
-              content: '""',
-            },
-            'code::after': {
-              content: '""',
-            },
+            'code::before': { content: '""' },
+            'code::after': { content: '""' },
             'pre code': {
               backgroundColor: 'transparent',
               padding: '0',
@@ -66,26 +63,36 @@ export default {
               fontSize: '13px',
               lineHeight: '1.7',
             },
-            'blockquote p:first-of-type::before': {
-              content: '""',
-            },
-            'blockquote p:last-of-type::after': {
-              content: '""',
-            },
+            'blockquote p:first-of-type::before': { content: '""' },
+            'blockquote p:last-of-type::after': { content: '""' },
             strong: {
-              color: '#171717',
+              color: theme('colors.expo.ink'),
               fontWeight: '600',
             },
             a: {
-              color: '#0d74ce', // expo-text-link
+              color: theme('colors.expo.text-link'),
               textDecoration: 'none',
             },
-            'a:hover': {
-              textDecoration: 'underline',
-            },
+            'a:hover': { textDecoration: 'underline' },
           },
         },
-      },
+        dark: {
+          css: {
+            color: theme('colors.expo.on-dark-soft'),
+            h1: { color: theme('colors.expo.on-dark') },
+            h2: { color: theme('colors.expo.on-dark') },
+            h3: { color: theme('colors.expo.on-dark') },
+            h4: { color: theme('colors.expo.on-dark') },
+            code: {
+              color: theme('colors.expo.on-dark'),
+              backgroundColor: theme('colors.expo.surface-dark-elevated'),
+            },
+            strong: { color: theme('colors.expo.on-dark') },
+            'pre code': { color: theme('colors.expo.on-dark') },
+            a: { color: theme('colors.expo.accent-link-bright') },
+          },
+        },
+      }),
       colors: {
         expo: {
           black: '#000000',

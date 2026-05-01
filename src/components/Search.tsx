@@ -24,7 +24,7 @@ function highlightText(text: string, query: string) {
   const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
   const parts = text.split(regex);
   return parts.map((part, i) =>
-    regex.test(part) ? <mark key={i} className="bg-expo-surface-strong text-expo-ink font-semibold">{part}</mark> : part
+    regex.test(part) ? <mark key={i} className="bg-expo-surface-strong dark:bg-expo-surface-dark-elevated text-expo-ink dark:text-expo-on-dark font-semibold">{part}</mark> : part
   );
 }
 
@@ -91,17 +91,17 @@ function SearchModal() {
       onClick={() => setIsOpen(false)}
     >
       <div
-        className="fixed inset-0 bg-expo-surface-dark/40 backdrop-blur-sm"
+        className="fixed inset-0 bg-expo-surface-dark/60 backdrop-blur-sm dark:bg-expo-black/80"
         aria-hidden="true"
       />
       
       <div
-        className="relative w-full max-w-xl bg-expo-canvas rounded-lg shadow-expo-card-hover overflow-hidden border border-expo-hairline"
+        className="relative w-full max-w-xl bg-expo-canvas dark:bg-expo-surface-dark-elevated rounded-lg shadow-expo-card-hover overflow-hidden border border-expo-hairline dark:border-expo-surface-strong/30 transition-colors"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center px-5 py-4 border-b border-expo-hairline">
+        <div className="flex items-center px-5 py-4 border-b border-expo-hairline dark:border-expo-surface-strong/50 transition-colors">
           <svg
-            className="w-5 h-5 text-expo-muted mr-3 flex-shrink-0"
+            className="w-5 h-5 text-expo-muted dark:text-expo-on-dark-soft/60 mr-3 flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -118,23 +118,23 @@ function SearchModal() {
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="搜尋文章..."
-            className="w-full bg-transparent outline-none text-expo-body-md font-sans placeholder:text-expo-muted"
+            className="w-full bg-transparent outline-none text-expo-body-md font-sans placeholder:text-expo-muted dark:text-expo-on-dark dark:placeholder:text-expo-on-dark-soft/60 transition-colors"
             autoFocus
           />
-          <kbd className="hidden sm:inline-block px-2 py-1 text-[10px] font-medium text-expo-muted bg-expo-surface-strong rounded">
+          <kbd className="hidden sm:inline-block px-2 py-1 text-[10px] font-medium text-expo-muted dark:text-expo-on-dark-soft bg-expo-surface-strong dark:bg-expo-surface-dark-elevated/50 rounded transition-colors">
             ESC
           </kbd>
         </div>
 
         <div className="max-h-[60vh] overflow-y-auto">
           {!query && (
-            <div className="px-5 py-8 text-center text-expo-muted text-caption">
+            <div className="px-5 py-8 text-center text-expo-muted dark:text-expo-on-dark-soft/60 text-caption transition-colors">
               輸入關鍵字搜尋文章
             </div>
           )}
 
           {query && results.length === 0 && (
-            <div className="px-5 py-8 text-center text-expo-muted text-caption">
+            <div className="px-5 py-8 text-center text-expo-muted dark:text-expo-on-dark-soft/60 text-caption transition-colors">
               找不到符合「{query}」的文章
             </div>
           )}
@@ -143,24 +143,24 @@ function SearchModal() {
             <a
               key={result.slug}
               href={`/blog/${result.slug}`}
-              className={`flex flex-col px-5 py-4 hover:bg-expo-canvas-soft transition-colors no-underline border-t ${
-                index === 0 ? 'border-transparent' : 'border-expo-hairline'
+              className={`flex flex-col px-5 py-4 hover:bg-expo-canvas-soft dark:hover:bg-expo-surface-strong/20 transition-colors no-underline border-t ${
+                index === 0 ? 'border-transparent' : 'border-expo-hairline dark:border-expo-surface-strong/30'
               }`}
             >
-              <h3 className="text-title-md text-expo-ink mb-1">
+              <h3 className="text-title-md text-expo-ink dark:text-expo-on-dark mb-1 transition-colors">
                 {highlightText(result.title, query)}
               </h3>
-              <p className="text-body-sm text-expo-body line-clamp-2">
+              <p className="text-body-sm text-expo-body dark:text-expo-on-dark-soft line-clamp-2 transition-colors">
                 {highlightText(result.description, query)}
               </p>
               <div className="flex items-center mt-3 gap-2">
-                <time className="text-[11px] text-expo-muted">
+                <time className="text-[11px] text-expo-muted dark:text-expo-on-dark-soft/60">
                   {new Date(result.date).toLocaleDateString('zh-TW', { year: 'numeric', month: 'short' })}
                 </time>
                 {result.tags.slice(0, 2).map(tag => (
                   <span
                     key={tag}
-                    className="text-[11px] px-2 py-0.5 bg-expo-surface-strong text-expo-body rounded-full"
+                    className="text-[11px] px-2 py-0.5 bg-expo-surface-strong dark:bg-expo-surface-dark-elevated/50 text-expo-body dark:text-expo-on-dark-soft rounded-full transition-colors"
                   >
                     {tag}
                   </span>
@@ -186,7 +186,7 @@ export function SearchTrigger() {
     <>
       <button
         onClick={openSearch}
-        className="flex items-center gap-2 px-3 py-1.5 bg-expo-surface-strong text-expo-ink rounded-md text-button font-medium hover:bg-expo-hairline-strong transition-colors"
+        className="flex items-center gap-2 px-3 py-1.5 bg-expo-surface-strong dark:bg-expo-surface-dark-elevated text-expo-ink dark:text-expo-on-dark-soft rounded-md text-button font-medium hover:bg-expo-hairline-strong dark:hover:bg-expo-surface-strong/30 transition-colors"
       >
         <svg
           className="w-4 h-4"
@@ -202,7 +202,7 @@ export function SearchTrigger() {
           />
         </svg>
         <span className="hidden sm:inline">搜尋</span>
-        <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] bg-expo-canvas border border-expo-hairline rounded">
+        <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] bg-expo-canvas dark:bg-expo-surface-dark-elevated/50 border border-expo-hairline dark:border-expo-surface-strong/50 rounded text-expo-muted dark:text-expo-on-dark-soft/60 transition-colors">
           ⌘K
         </kbd>
       </button>

@@ -4,17 +4,17 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 
 <BaseLayout title="首頁" description="DinoYee 的個人部落格，分享技術筆記與心得">
   <div class="text-center space-y-8 max-w-3xl relative">
-    <!-- Atmospheric Sky Wash Background -->
-    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-expo-sky-light/30 via-expo-canvas to-expo-canvas rounded-[100%] blur-3xl opacity-60"></div>
+    <!-- Atmospheric Sky Wash Background (Dark Mode variant) -->
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-expo-sky-light/30 via-expo-canvas to-expo-canvas dark:from-expo-surface-dark-elevated/50 dark:via-expo-surface-dark dark:to-expo-surface-dark rounded-[100%] blur-3xl opacity-60 transition-colors duration-200"></div>
     
-    <h1 class="text-display-mega text-expo-ink leading-tight tracking-[-1.92px]">
+    <h1 class="text-display-mega text-expo-ink leading-tight tracking-[-1.92px] dark:text-expo-on-dark transition-colors duration-200">
       DinoYee 的部落格
     </h1>
-    <p class="text-body-md text-expo-body max-w-xl mx-auto">
+    <p class="text-body-md text-expo-body max-w-xl mx-auto dark:text-expo-on-dark-soft transition-colors duration-200">
       分享技術筆記、開發心得與學習歷程。
     </p>
     <div class="pt-4">
-      <a href="/blog" class="expo-btn-primary no-underline inline-flex items-center">
+      <a href="/blog" class="expo-btn-primary no-underline inline-flex items-center dark:bg-expo-on-dark dark:text-expo-surface-dark hover:dark:bg-expo-on-dark-soft">
         查看所有文章
       </a>
     </div>

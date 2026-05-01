@@ -9,31 +9,31 @@ const posts = (await getCollection('blog'))
 
 <BaseLayout title="部落格" description="DinoYee 的所有部落格文章">
   <header class="text-center space-y-4 mb-16">
-    <h1 class="text-display-xl text-expo-ink">部落格</h1>
-    <p class="text-body-md text-expo-body">所有文章</p>
+    <h1 class="text-display-xl text-expo-ink dark:text-expo-on-dark transition-colors duration-200">部落格</h1>
+    <p class="text-body-md text-expo-body dark:text-expo-on-dark-soft transition-colors duration-200">所有文章</p>
   </header>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
     {posts.map(post => (
-      <article class="expo-card expo-card-hover flex flex-col h-full">
+      <article class="expo-card expo-card-hover flex flex-col h-full dark:bg-expo-surface-dark-elevated dark:border-expo-surface-dark-elevated dark:hover:border-expo-on-dark/20 transition-colors duration-200">
         <div class="flex-1">
           <div class="flex items-center gap-2 mb-4">
-            <time class="text-caption text-expo-muted">
+            <time class="text-caption text-expo-muted dark:text-expo-on-dark-soft/60">
               {post.data.date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
             </time>
             {post.data.tags.slice(0, 2).map(tag => (
-              <span key={tag} class="expo-badge">{tag}</span>
+              <span key={tag} class="expo-badge dark:bg-expo-surface-strong/20 dark:text-expo-on-dark-soft">{tag}</span>
             ))}
           </div>
-          <h2 class="text-title-md text-expo-ink leading-tight mb-2">
-            <a href={`/blog/${post.slug}`} class="no-underline hover:text-expo-text-link">
+          <h2 class="text-title-md text-expo-ink leading-tight mb-2 dark:text-expo-on-dark transition-colors duration-200">
+            <a href={`/blog/${post.slug}`} class="no-underline hover:text-expo-text-link dark:text-expo-on-dark dark:hover:text-expo-accent-link-bright">
               {post.data.title}
             </a>
           </h2>
-          <p class="text-body-sm text-expo-body line-clamp-2">{post.data.description}</p>
+          <p class="text-body-sm text-expo-body line-clamp-2 dark:text-expo-on-dark-soft transition-colors duration-200">{post.data.description}</p>
         </div>
-        <div class="mt-6 pt-4 border-t border-expo-hairline">
-          <a href={`/blog/${post.slug}`} class="text-expo-text-link no-underline text-button font-medium hover:underline">
+        <div class="mt-6 pt-4 border-t border-expo-hairline dark:border-expo-surface-strong/50 transition-colors duration-200">
+          <a href={`/blog/${post.slug}`} class="text-expo-text-link no-underline text-button font-medium hover:underline dark:text-expo-accent-link-bright">
             閱讀更多 &rarr;
           </a>
         </div>

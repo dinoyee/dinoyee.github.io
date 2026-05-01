@@ -1,5 +1,6 @@
 ---
 import { SearchTrigger } from '@/components/Search';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 interface Props {
   title: string;
@@ -17,17 +18,26 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | DinoYee Blog</title>
+    <script is:inline>
+      const theme = localStorage.getItem('theme');
+      if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
   </head>
-  <body class="bg-expo-canvas text-expo-body font-sans">
-    <nav class="bg-expo-canvas border-b border-expo-hairline h-16 px-6 flex items-center justify-between sticky top-0 z-50">
-      <a href="/" class="text-expo-ink font-semibold text-nav-link hover:text-expo-text-link transition-colors no-underline">
+  <body class="bg-expo-canvas text-expo-body font-sans dark:bg-expo-surface-dark dark:text-expo-on-dark-soft transition-colors duration-200">
+    <nav class="bg-expo-canvas border-b border-expo-hairline h-16 px-6 flex items-center justify-between sticky top-0 z-50 dark:bg-expo-surface-dark dark:border-expo-surface-dark-elevated transition-colors duration-200">
+      <a href="/" class="text-expo-ink font-semibold text-nav-link hover:text-expo-text-link transition-colors no-underline dark:text-expo-on-dark dark:hover:text-expo-accent-link-bright">
         DinoYee
       </a>
-      <div class="flex items-center gap-6">
-        <a href="/" class="nav-link">首頁</a>
-        <a href="/blog" class="nav-link">部落格</a>
-        <a href="/tags" class="nav-link">分類</a>
+      <div class="flex items-center gap-4">
+        <a href="/" class="nav-link dark:text-expo-on-dark-soft dark:hover:text-expo-on-dark">首頁</a>
+        <a href="/blog" class="nav-link dark:text-expo-on-dark-soft dark:hover:text-expo-on-dark">部落格</a>
+        <a href="/tags" class="nav-link dark:text-expo-on-dark-soft dark:hover:text-expo-on-dark">分類</a>
         <SearchTrigger client:only="react" />
+        <ThemeToggle client:only="react" />
       </div>
     </nav>
 
@@ -35,8 +45,8 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
       <slot />
     </main>
 
-    <footer class="bg-expo-canvas border-t border-expo-hairline py-section px-6">
-      <div class="max-w-5xl mx-auto text-center text-body-sm text-expo-muted">
+    <footer class="bg-expo-canvas border-t border-expo-hairline py-section px-6 dark:bg-expo-surface-dark dark:border-expo-surface-dark-elevated transition-colors duration-200">
+      <div class="max-w-5xl mx-auto text-center text-body-sm text-expo-muted dark:text-expo-on-dark-soft">
         © {new Date().getFullYear()} DinoYee. All rights reserved.
       </div>
     </footer>
