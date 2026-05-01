@@ -1,8 +1,91 @@
+import typography from '@tailwindcss/typography';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: '#60646c', // expo-body
+            h1: {
+              color: '#171717', // expo-ink
+              fontWeight: '600',
+              fontSize: '36px',
+              lineHeight: '1.15',
+              letterSpacing: '-1.08px',
+              marginTop: '0',
+              marginBottom: '0.5em',
+            },
+            h2: {
+              color: '#171717',
+              fontWeight: '600',
+              fontSize: '28px',
+              lineHeight: '1.2',
+              letterSpacing: '-0.84px',
+              marginTop: '2em',
+              marginBottom: '0.5em',
+            },
+            h3: {
+              color: '#171717',
+              fontWeight: '600',
+              fontSize: '22px',
+              lineHeight: '1.25',
+              letterSpacing: '-0.5px',
+              marginTop: '1.5em',
+              marginBottom: '0.5em',
+            },
+            h4: {
+              color: '#171717',
+              fontWeight: '600',
+              fontSize: '18px',
+              lineHeight: '1.4',
+              marginTop: '1.5em',
+              marginBottom: '0.5em',
+            },
+            code: {
+              color: '#171717',
+              fontWeight: '400',
+              backgroundColor: '#f0f0f3', // expo-surface-strong
+              borderRadius: '4px',
+              padding: '0.2em 0.4em',
+              fontSize: '13px',
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            'pre code': {
+              backgroundColor: 'transparent',
+              padding: '0',
+              borderRadius: '0',
+              fontSize: '13px',
+              lineHeight: '1.7',
+            },
+            'blockquote p:first-of-type::before': {
+              content: '""',
+            },
+            'blockquote p:last-of-type::after': {
+              content: '""',
+            },
+            strong: {
+              color: '#171717',
+              fontWeight: '600',
+            },
+            a: {
+              color: '#0d74ce', // expo-text-link
+              textDecoration: 'none',
+            },
+            'a:hover': {
+              textDecoration: 'underline',
+            },
+          },
+        },
+      },
       colors: {
         expo: {
           black: '#000000',
@@ -81,5 +164,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
