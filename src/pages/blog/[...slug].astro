@@ -21,19 +21,26 @@ const { Content } = await post.render();
 
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article class="max-w-3xl w-full space-y-8">
-    <header class="text-center space-y-4 pb-8 border-b border-apple-divider">
-      <time class="text-caption text-apple-ink-muted-48">
+    <header class="text-center space-y-6 pb-8 border-b border-expo-hairline">
+      <div class="flex items-center justify-center gap-2">
+        {post.data.tags.map(tag => (
+          <a href={`/tags/${tag}`} class="expo-badge no-underline hover:bg-expo-hairline-strong transition-colors">
+            {tag}
+          </a>
+        ))}
+      </div>
+      <time class="text-caption text-expo-muted">
         {post.data.date.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
       </time>
-      <h1 class="text-display-lg">{post.data.title}</h1>
-      <p class="text-lead-airy text-apple-ink-muted-80">{post.data.description}</p>
+      <h1 class="text-display-xl text-expo-ink leading-tight">{post.data.title}</h1>
+      <p class="text-body-md text-expo-body max-w-xl mx-auto">{post.data.description}</p>
     </header>
 
-    <div class="prose prose-apple max-w-none">
+    <div class="prose prose-expo max-w-none">
       <Content />
     </div>
 
-    <div class="pt-8 border-t border-apple-divider flex justify-between items-center">
+    <div class="pt-8 border-t border-expo-hairline flex justify-between items-center">
       <a href="/blog" class="nav-link no-underline">
         &larr; 回到部落格列表
       </a>

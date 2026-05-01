@@ -18,15 +18,15 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | DinoYee Blog</title>
   </head>
-  <body class="bg-apple-canvas text-apple-ink">
-    <nav class="bg-apple-surface-black h-11 px-6 flex items-center justify-between sticky top-0 z-50">
-      <a href="/" class="text-white font-semibold text-nav hover:text-apple-blue-dark transition-colors no-underline">
+  <body class="bg-expo-canvas text-expo-body font-sans">
+    <nav class="bg-expo-canvas border-b border-expo-hairline h-16 px-6 flex items-center justify-between sticky top-0 z-50">
+      <a href="/" class="text-expo-ink font-semibold text-nav-link hover:text-expo-text-link transition-colors no-underline">
         DinoYee
       </a>
       <div class="flex items-center gap-6">
-        <a href="/" class="text-white text-nav hover:text-apple-blue-dark transition-colors no-underline">首頁</a>
-        <a href="/blog" class="text-white text-nav hover:text-apple-blue-dark transition-colors no-underline">部落格</a>
-        <a href="/tags" class="text-white text-nav hover:text-apple-blue-dark transition-colors no-underline">分類</a>
+        <a href="/" class="nav-link">首頁</a>
+        <a href="/blog" class="nav-link">部落格</a>
+        <a href="/tags" class="nav-link">分類</a>
         <SearchTrigger client:only="react" />
       </div>
     </nav>
@@ -35,8 +35,8 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
       <slot />
     </main>
 
-    <footer class="bg-apple-parchment py-section px-6 border-t border-apple-hairline">
-      <div class="max-w-3xl mx-auto text-center text-fine-print text-apple-ink-muted-48">
+    <footer class="bg-expo-canvas border-t border-expo-hairline py-section px-6">
+      <div class="max-w-5xl mx-auto text-center text-body-sm text-expo-muted">
         © {new Date().getFullYear()} DinoYee. All rights reserved.
       </div>
     </footer>

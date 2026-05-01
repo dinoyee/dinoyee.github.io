@@ -4,54 +4,70 @@
 
 @layer base {
   html {
-    font-family: 'SF Pro Text', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-apple-parchment text-apple-ink font-body text-apple-body;
+    @apply bg-expo-canvas text-expo-body font-sans;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display font-semibold tracking-tight text-apple-ink;
+    @apply font-sans font-semibold text-expo-ink tracking-tight;
   }
 
   h1 { @apply text-display-lg; }
   h2 { @apply text-display-md; }
-  h3 { @apply text-lead; }
+  h3 { @apply text-display-sm; }
 
   a {
-    @apply text-apple-blue hover:underline;
-  }
-
-  a:hover {
-    color: #0071e3;
+    @apply text-expo-text-link hover:underline;
   }
 
   code {
-    @apply bg-apple-parchment px-1.5 py-0.5 rounded text-caption font-mono text-apple-ink;
+    @apply bg-expo-surface-strong px-1.5 py-0.5 rounded text-code font-mono text-expo-ink;
   }
 
   pre {
-    @apply bg-apple-surface-black text-white p-6 rounded-lg overflow-x-auto;
+    @apply bg-expo-surface-dark text-expo-on-dark p-6 rounded-lg overflow-x-auto;
   }
 
   pre code {
-    @apply bg-transparent p-0 text-sm font-mono;
+    @apply bg-transparent p-0 text-sm font-mono text-expo-on-dark;
   }
 }
 
 @layer components {
-  .apple-btn-primary {
-    @apply bg-apple-blue text-white rounded-pill px-5.5 py-3 font-medium text-button-lg transition-transform active:scale-95;
+  .expo-btn-primary {
+    @apply bg-expo-black text-expo-on-primary rounded-md px-4.5 py-2.5 font-medium text-button transition-colors;
   }
 
-  .apple-btn-secondary {
-    @apply text-apple-blue border border-apple-blue rounded-pill px-5.5 py-3 font-medium hover:bg-apple-blue hover:text-white transition-colors;
+  .expo-btn-primary:hover {
+    @apply bg-expo-black-active;
+  }
+
+  .expo-btn-secondary {
+    @apply bg-expo-surface-card text-expo-ink border border-expo-hairline-strong rounded-md px-4.5 py-2.5 font-medium text-button transition-colors;
+  }
+
+  .expo-btn-secondary:hover {
+    @apply bg-expo-canvas-soft;
+  }
+
+  .expo-card {
+    @apply bg-expo-surface-card rounded-lg border border-expo-hairline-strong p-6 transition-shadow;
+  }
+
+  .expo-card-hover:hover {
+    @apply shadow-expo-card-hover;
+  }
+
+  .expo-badge {
+    @apply bg-expo-surface-strong text-expo-ink rounded-pill px-2.5 py-1 text-caption-uppercase;
   }
 
   .nav-link {
-    @apply text-apple-ink text-nav no-underline hover:text-apple-blue transition-colors;
+    @apply text-expo-ink text-nav-link no-underline hover:text-expo-text-link transition-colors;
   }
 }

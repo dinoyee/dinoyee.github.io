@@ -24,7 +24,7 @@ function highlightText(text: string, query: string) {
   const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
   const parts = text.split(regex);
   return parts.map((part, i) =>
-    regex.test(part) ? <mark key={i} className="bg-apple-pearl text-apple-blue font-semibold">{part}</mark> : part
+    regex.test(part) ? <mark key={i} className="bg-expo-surface-strong text-expo-ink font-semibold">{part}</mark> : part
   );
 }
 
@@ -45,7 +45,6 @@ function SearchModal() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [searchData, setSearchData] = useState<SearchItem[]>([]);
-  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     fetch('/api/search.json')
@@ -92,17 +91,17 @@ function SearchModal() {
       onClick={() => setIsOpen(false)}
     >
       <div
-        className="fixed inset-0 bg-apple-surface-black/40 backdrop-blur-sm"
+        className="fixed inset-0 bg-expo-surface-dark/40 backdrop-blur-sm"
         aria-hidden="true"
       />
       
       <div
-        className="relative w-full max-w-xl bg-white rounded-[11px] shadow-[rgba(0,0,0,0.22)_3px_5px_30px] overflow-hidden"
+        className="relative w-full max-w-xl bg-expo-canvas rounded-lg shadow-expo-card-hover overflow-hidden border border-expo-hairline"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center px-5 py-4 border-b border-apple-hairline">
+        <div className="flex items-center px-5 py-4 border-b border-expo-hairline">
           <svg
-            className="w-5 h-5 text-apple-ink-muted-48 mr-3 flex-shrink-0"
+            className="w-5 h-5 text-expo-muted mr-3 flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -119,23 +118,23 @@ function SearchModal() {
             value={query}
             onChange={e => setQuery(e.target.value)}
             placeholder="搜尋文章..."
-            className="w-full bg-transparent outline-none text-apple-body font-body placeholder:text-apple-ink-muted-48"
+            className="w-full bg-transparent outline-none text-expo-body-md font-sans placeholder:text-expo-muted"
             autoFocus
           />
-          <kbd className="hidden sm:inline-block px-2 py-1 text-[10px] font-medium text-apple-ink-muted-48 bg-apple-parchment rounded">
+          <kbd className="hidden sm:inline-block px-2 py-1 text-[10px] font-medium text-expo-muted bg-expo-surface-strong rounded">
             ESC
           </kbd>
         </div>
 
         <div className="max-h-[60vh] overflow-y-auto">
           {!query && (
-            <div className="px-5 py-8 text-center text-apple-ink-muted-48 text-caption">
+            <div className="px-5 py-8 text-center text-expo-muted text-caption">
               輸入關鍵字搜尋文章
             </div>
           )}
 
           {query && results.length === 0 && (
-            <div className="px-5 py-8 text-center text-apple-ink-muted-48 text-caption">
+            <div className="px-5 py-8 text-center text-expo-muted text-caption">
               找不到符合「{query}」的文章
             </div>
           )}
@@ -144,24 +143,24 @@ function SearchModal() {
             <a
               key={result.slug}
               href={`/blog/${result.slug}`}
-              className={`flex flex-col px-5 py-4 hover:bg-apple-parchment transition-colors no-underline border-t ${
-                index === 0 ? 'border-transparent' : 'border-apple-hairline'
+              className={`flex flex-col px-5 py-4 hover:bg-expo-canvas-soft transition-colors no-underline border-t ${
+                index === 0 ? 'border-transparent' : 'border-expo-hairline'
               }`}
             >
-              <h3 className="text-body-strong text-apple-ink mb-1">
+              <h3 className="text-title-md text-expo-ink mb-1">
                 {highlightText(result.title, query)}
               </h3>
-              <p className="text-caption text-apple-ink-muted-80 line-clamp-2">
+              <p className="text-body-sm text-expo-body line-clamp-2">
                 {highlightText(result.description, query)}
               </p>
-              <div className="flex items-center mt-2 gap-2">
-                <time className="text-[10px] text-apple-ink-muted-48">
+              <div className="flex items-center mt-3 gap-2">
+                <time className="text-[11px] text-expo-muted">
                   {new Date(result.date).toLocaleDateString('zh-TW', { year: 'numeric', month: 'short' })}
                 </time>
                 {result.tags.slice(0, 2).map(tag => (
                   <span
                     key={tag}
-                    className="text-[10px] px-2 py-0.5 bg-apple-parchment text-apple-ink-muted-80 rounded-full"
+                    className="text-[11px] px-2 py-0.5 bg-expo-surface-strong text-expo-body rounded-full"
                   >
                     {tag}
                   </span>
@@ -187,10 +186,10 @@ export function SearchTrigger() {
     <>
       <button
         onClick={openSearch}
-        className="flex items-center gap-2 px-3 py-1.5 bg-apple-surface-black/80 text-white rounded-full text-nav hover:bg-apple-surface-black transition-colors"
+        className="flex items-center gap-2 px-3 py-1.5 bg-expo-surface-strong text-expo-ink rounded-md text-button font-medium hover:bg-expo-hairline-strong transition-colors"
       >
         <svg
-          className="w-3.5 h-3.5"
+          className="w-4 h-4"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -203,7 +202,7 @@ export function SearchTrigger() {
           />
         </svg>
         <span className="hidden sm:inline">搜尋</span>
-        <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[9px] bg-white/20 rounded">
+        <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[10px] bg-expo-canvas border border-expo-hairline rounded">
           ⌘K
         </kbd>
       </button>

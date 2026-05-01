@@ -3,13 +3,18 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="首頁" description="DinoYee 的個人部落格，分享技術筆記與心得">
-  <div class="text-center space-y-6 max-w-2xl">
-    <h1 class="text-hero">DinoYee 的部落格</h1>
-    <p class="text-lead-airy text-apple-ink-muted-80 mx-auto">
+  <div class="text-center space-y-8 max-w-3xl relative">
+    <!-- Atmospheric Sky Wash Background -->
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-expo-sky-light/30 via-expo-canvas to-expo-canvas rounded-[100%] blur-3xl opacity-60"></div>
+    
+    <h1 class="text-display-mega text-expo-ink leading-tight tracking-[-1.92px]">
+      DinoYee 的部落格
+    </h1>
+    <p class="text-body-md text-expo-body max-w-xl mx-auto">
       分享技術筆記、開發心得與學習歷程。
     </p>
     <div class="pt-4">
-      <a href="/blog" class="apple-btn-primary no-underline">
+      <a href="/blog" class="expo-btn-primary no-underline inline-flex items-center">
         查看所有文章
       </a>
     </div>
