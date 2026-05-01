@@ -51,5 +51,48 @@ const { title, description = 'A personal blog by DinoYee' } = Astro.props;
         © {new Date().getFullYear()} DinoYee. All rights reserved.
       </div>
     </footer>
+
+    <script is:inline>
+      (function() {
+        function initCodeBlocks() {
+          document.querySelectorAll('pre.shiki').forEach(function(pre) {
+            if (pre.querySelector('.code-header')) return;
+            
+            var code = pre.querySelector('code');
+            if (!code) return;
+
+            var match = code.className.match(/language-(\w+)/);
+            var lang = match ? match[1].toUpperCase() : 'CODE';
+
+            var header = document.createElement('div');
+            header.className = 'code-header';
+            header.innerHTML = '<span class="lang">' + lang + '</span>' +
+                               '<button class="copy-btn"><span>Copy</span></button>';
+            
+            pre.appendChild(header);
+
+            var btn = header.querySelector('.copy-btn');
+            btn.addEventListener('click', function() {
+              if (navigator.clipboard) {
+                navigator.clipboard.writeText(code.innerText).then(function() {
+                  var span = btn.querySelector('span');
+                  var original = span.textContent;
+                  span.textContent = 'Copied!';
+                  setTimeout(function() {
+                    span.textContent = original;
+                  }, 2000);
+                });
+              }
+            });
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initCodeBlocks);
+        } else {
+          initCodeBlocks();
+        }
+      })();
+    </script>
   </body>
 </html>
