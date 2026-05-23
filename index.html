@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Compounding Wiki</title>
+  
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Prism.js Dark Theme for Code Highlighting -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Web App Wrapper -->
+  <div class="app-container">
+    
+    <!-- Hamburger Menu Button for Mobile -->
+    <button class="menu-toggle-btn" id="menuToggle" aria-label="切換選單">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    
+    <!-- Left Sidebar: Navigation & Search -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon"><i class="fa-solid fa-brain"></i></span>
+          <span class="logo-text">LLM Wiki</span>
+        </div>
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="切換主題">
+          <i class="fa-solid fa-sun"></i>
+        </button>
+      </div>
+      
+      <!-- Interactive Real-time Search Box -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="搜尋知識庫 (TF-IDF)..." autocomplete="off">
+          <button id="searchClearBtn" class="search-clear-btn" style="display: none;">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <!-- Real-time dropdown search results -->
+        <div class="search-results-dropdown" id="searchResults" style="display: none;"></div>
+      </div>
+      
+      <!-- Dynamic Nav generated from wiki/index.md -->
+      <nav class="sidebar-nav" id="sidebarNav">
+        <div class="nav-loading">
+          <i class="fa-solid fa-circle-notch fa-spin"></i> 載入目錄中...
+        </div>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <span class="status-indicator"></span>
+        <span class="status-text">LLM Compounding Active</span>
+      </div>
+    </aside>
+    
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <!-- Right Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Bar: Navigation Breadcrumbs & Actions -->
+      <header class="top-bar">
+        <div style="display: flex; align-items: center;">
+          <button class="sidebar-toggle-desktop" id="desktopSidebarToggle" aria-label="收合側邊欄">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="breadcrumbs" id="breadcrumbs">
+            <span class="breadcrumb-item"><i class="fa-solid fa-house"></i> Home</span>
+          </div>
+        </div>
+        <div class="top-actions">
+          <a href="https://github.com" target="_blank" class="github-btn" id="gitHubLink">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </header>
+      
+      <!-- Core Article Rendering Container -->
+      <article class="content-wrapper" id="contentArea">
+        <div class="content-loading">
+          <i class="fa-solid fa-circle-notch fa-spin loading-icon"></i>
+          <p>載入文件中...</p>
+        </div>
+      </article>
+      
+    </main>
+  </div>
+
+  <!-- CDN scripts -->
+  <!-- Marked.js for markdown parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <!-- DOMPurify to prevent XSS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.3/purify.min.js"></script>
+  <!-- Prism.js for code block syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-dart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+
+  <!-- Main JavaScript Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
