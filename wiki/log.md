@@ -4,6 +4,13 @@
 
 ---
 
+## [2026-05-27] ingest | Android Kotlin Flow Guide
+* **操作**: Ingest
+* **描述**: 編譯並導入了 Android Kotlin Flow 異步串流指南，涵蓋 Cold/Hot 流對比、StateFlow/SharedFlow 設計、生命週期安全收集人因實作與雙語術語白話對照，並在目錄中註冊全新 Android & Kotlin 進階板塊。
+* **變更檔案**:
+  - `[NEW] wiki/concepts/android-kotlin-flow.md`
+  - `[MODIFY] wiki/index.md`
+
 ## [2026-05-24] ingest | Expo Design System Guide
 * **操作**: Ingest
 * **描述**: 透過 `npx getdesign@latest add expo` 工具下載了 Expo 官方 `DESIGN.md` 設計規範，並在知識庫中撰寫了中文化的說明文件，同時將網站視覺重新塑造為高質感的 Expo 極深色調、代碼中心化、紫羅蘭高亮主題。

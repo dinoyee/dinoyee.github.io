@@ -36,6 +36,9 @@
 * [Flutter Dio 網路請求套件](concepts/flutter-dio-client.md) — 了解強大的 HTTP 客戶端、基礎 GET/POST 語法與術語白話解釋。
 * [資深工程師級 Dio 單例封裝與攔截器設計](synthesis/flutter-dio-senior-wrapper.md) — 企業級 Singleton 網路層封裝、Token 注入、中文化錯誤攔截器的完整實作程式碼。
 
+### 🤖 Android 與 Kotlin 進階 (Android & Kotlin Advanced)
+* [Kotlin Flow 異步串流與 MVVM 實戰](concepts/android-kotlin-flow.md) — 深入剖析 Cold vs Hot、StateFlow/SharedFlow、與生命週期感知收集人因實戰。
+
 ### 🛠️ 知識庫工具箱 (Wiki Toolbox)
 * [Obsidian](entities/obsidian.md) — 作為本知識庫 IDE 的雙向連結 Markdown 筆記軟體。
 
