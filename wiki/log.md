@@ -4,6 +4,13 @@
 
 ---
 
+## [2026-05-27] ingest | macOS Homebrew Guide
+* **操作**: Ingest
+* **描述**: 編譯並導入了 macOS Homebrew 套件管理器完整使用指南，涵蓋 Formula/Cask 概念、常規指令、後台啟動服務（Brew Services）、備份復原工具（Brewfile）以及釀酒術語白話對照。
+* **變更檔案**:
+  - `[NEW] wiki/entities/homebrew.md`
+  - `[MODIFY] wiki/index.md`
+
 ## [2026-05-27] ingest | Android Kotlin Flow Guide
 * **操作**: Ingest
 * **描述**: 編譯並導入了 Android Kotlin Flow 異步串流指南，涵蓋 Cold/Hot 流對比、StateFlow/SharedFlow 設計、生命週期安全收集人因實作與雙語術語白話對照，並在目錄中註冊全新 Android & Kotlin 進階板塊。
