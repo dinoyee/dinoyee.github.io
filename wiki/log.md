@@ -4,6 +4,14 @@
 
 ---
 
+## [2026-05-27] feat | Mermaid Dynamic Diagram Rendering
+* **操作**: Feat
+* **描述**: 引入了 Mermaid.js 10.6.1 CDN，在 SPA 的 `app.js` 中實現了動態攔截並渲染 Mermaid 圖表，完美避開 Prism 代碼高亮包裹。此外，實作了「雙主題無刷同步（Zero-refresh Theme Sync）」熱重繪機制，當使用者切換明/暗主題時，流程圖能即時、無痛重繪為相符的色彩風格。
+* **變更檔案**:
+  - `[MODIFY] index.html`
+  - `[MODIFY] app.js`
+  - `[MODIFY] CLAUDE.md`
+
 ## [2026-05-27] ingest | macOS Homebrew Auto-Backup Guide
 * **操作**: Ingest
 * **描述**: 編譯並導入了 macOS Homebrew 環境自動化備份指南，基於真實案例拆解 `backup.sh` 自動化核心腳本，介紹 Zsh 別名觸發與 `launchd` plist 定時守護進程，倡導「環境即代碼」（EaC）的 DevOps 最佳實踐。
