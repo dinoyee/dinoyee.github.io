@@ -922,6 +922,41 @@ html[data-theme="light"] .markdown-body tr:nth-child(even) {
     padding-left: 72px; /* Avoid overlapping hamburger toggle button */
   }
   
+  .breadcrumbs {
+    max-width: calc(100vw - 200px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  
+  .breadcrumbs .breadcrumb-item {
+    display: inline;
+    white-space: nowrap;
+  }
+  
+  .breadcrumbs .breadcrumb-separator {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* On mobile phones (max-width: 768px), simplify breadcrumbs to ONLY show the active page title */
+  @media (max-width: 768px) {
+    .breadcrumbs {
+      max-width: calc(100vw - 210px);
+    }
+    
+    .breadcrumbs .breadcrumb-item:not(.breadcrumb-active),
+    .breadcrumbs .breadcrumb-separator {
+      display: none;
+    }
+    
+    .breadcrumbs .breadcrumb-active {
+      display: inline;
+      font-size: 0.85rem;
+    }
+  }
+  
   .content-wrapper {
     padding: 30px 24px;
   }
