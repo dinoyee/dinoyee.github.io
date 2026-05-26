@@ -42,6 +42,7 @@
 ### 🛠️ 知識庫工具箱 (Wiki Toolbox)
 * [Obsidian](entities/obsidian.md) — 作為本知識庫 IDE 的雙向連結 Markdown 筆記軟體。
 * [Homebrew 套件管理器](entities/homebrew.md) — macOS 必備的開源套件管理工具與常用指令大全。
+* [Homebrew 環境自動化備份](concepts/homebrew-auto-backup.md) — 使用 Git 與 Bash 腳本實現 Mac 開發環境「環境即代碼」定時自動備份。
 
 ## 🧭 快速起步指引
 

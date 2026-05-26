@@ -4,6 +4,13 @@
 
 ---
 
+## [2026-05-27] ingest | macOS Homebrew Auto-Backup Guide
+* **操作**: Ingest
+* **描述**: 編譯並導入了 macOS Homebrew 環境自動化備份指南，基於真實案例拆解 `backup.sh` 自動化核心腳本，介紹 Zsh 別名觸發與 `launchd` plist 定時守護進程，倡導「環境即代碼」（EaC）的 DevOps 最佳實踐。
+* **變更檔案**:
+  - `[NEW] wiki/concepts/homebrew-auto-backup.md`
+  - `[MODIFY] wiki/index.md`
+
 ## [2026-05-27] ingest | macOS Homebrew Guide
 * **操作**: Ingest
 * **描述**: 編譯並導入了 macOS Homebrew 套件管理器完整使用指南，涵蓋 Formula/Cask 概念、常規指令、後台啟動服務（Brew Services）、備份復原工具（Brewfile）以及釀酒術語白話對照。
