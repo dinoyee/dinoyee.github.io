@@ -63,6 +63,14 @@ function initTheme() {
   const savedTheme = localStorage.getItem('theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
   updateThemeIcon(savedTheme);
+  
+  if (window.mermaid) {
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: savedTheme === 'dark' ? 'dark' : 'default',
+      securityLevel: 'loose'
+    });
+  }
 }
 
 function toggleTheme() {
@@ -72,6 +80,7 @@ function toggleTheme() {
   localStorage.setItem('theme', newTheme);
   updateThemeIcon(newTheme);
   updateGiscusTheme(newTheme);
+  reRenderMermaid(newTheme);
 }
 
 function updateThemeIcon(theme) {
@@ -531,6 +540,9 @@ function renderContent(route, rawMd) {
   // 6b. Dynamic load Giscus comment board
   loadGiscus(route);
   
+  // 6c. Parse and render Mermaid diagrams
+  renderMermaidDiagrams();
+  
   // 7. Resolve relative links inside rendered body to hash links
   const renderedLinks = contentArea.querySelectorAll('.markdown-body a');
   renderedLinks.forEach(a => {
@@ -866,4 +878,73 @@ function enhanceCodeBlocks() {
       });
     });
   });
+}
+
+// Parse and render Mermaid diagrams inside #contentArea
+function renderMermaidDiagrams() {
+  const contentArea = document.getElementById('contentArea');
+  if (!contentArea || !window.mermaid) return;
+  
+  const mermaidCodes = contentArea.querySelectorAll('.markdown-body pre code.language-mermaid');
+  if (mermaidCodes.length === 0) return;
+  
+  mermaidCodes.forEach(code => {
+    const pre = code.parentElement;
+    if (!pre) return;
+    
+    const source = code.textContent.trim();
+    
+    // Create container div for Mermaid diagram
+    const mermaidDiv = document.createElement('div');
+    mermaidDiv.className = 'mermaid';
+    mermaidDiv.setAttribute('data-diagram', source);
+    mermaidDiv.textContent = source;
+    
+    // Replace pre with the new mermaid div
+    pre.parentNode.replaceChild(mermaidDiv, pre);
+  });
+  
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: currentTheme === 'dark' ? 'dark' : 'default',
+    securityLevel: 'loose'
+  });
+  
+  mermaid.run({
+    nodes: contentArea.querySelectorAll('.mermaid')
+  }).catch(err => {
+    console.error('Mermaid render error:', err);
+  });
+}
+
+// Re-render Mermaid diagrams when theme switches
+async function reRenderMermaid(theme) {
+  if (!window.mermaid) return;
+  
+  const mermaidTheme = theme === 'dark' ? 'dark' : 'default';
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: mermaidTheme,
+    securityLevel: 'loose'
+  });
+  
+  const diagrams = document.querySelectorAll('.mermaid');
+  if (diagrams.length === 0) return;
+  
+  diagrams.forEach(el => {
+    const source = el.getAttribute('data-diagram');
+    if (source) {
+      el.removeAttribute('data-processed');
+      el.textContent = source;
+    }
+  });
+  
+  try {
+    await mermaid.run({
+      nodes: diagrams
+    });
+  } catch (err) {
+    console.error('Mermaid re-render error:', err);
+  }
 }

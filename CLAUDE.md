@@ -70,6 +70,13 @@ Periodically check and repair the wiki:
    * Scan for contradictions or outdated information across pages and reconcile them with the user.
 3. Append log: `## [YYYY-MM-DD] Lint | Health check and link repair`
 
+## 🛑 Operational Constraints & Rules
+
+1. **Git Commits & Push Controls**:
+   * **DO NOT** push (`git push`) to the remote repository automatically after code or article updates anymore.
+   * **Wait** for the user's explicit instruction: **「幫我推到 git 倉庫」** (help me push to the git repository) before executing the remote push command.
+   * You may still run `git add` and `git commit` locally to keep changes safely tracked, but **remote push (`git push`) must be explicitly requested by the user**.
+
 ---
 
 ## 🛠️ CLI Operations
