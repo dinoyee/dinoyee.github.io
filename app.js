@@ -168,7 +168,7 @@ function setupEventListeners() {
 async function loadApplication() {
   try {
     // 1. Fetch index.md first to build the menu
-    const indexResponse = await fetch(INDEX_FILE);
+    const indexResponse = await fetch(INDEX_FILE, { cache: 'no-cache' });
     if (!indexResponse.ok) throw new Error('無法載入 index.md');
     const indexMd = await indexResponse.text();
     
@@ -217,7 +217,7 @@ async function handleRouteChange() {
       mdContent = appState.pages[route];
     } else {
       const fetchPath = `${WIKI_DIR}/${route}`;
-      const response = await fetch(fetchPath);
+      const response = await fetch(fetchPath, { cache: 'no-cache' });
       if (!response.ok) throw new Error(`無法載入路徑: ${route}`);
       mdContent = await response.text();
       appState.pages[route] = mdContent; // Cache it
@@ -366,7 +366,7 @@ async function prefetchPages(links) {
   const fetchPromises = links.map(async (path) => {
     try {
       const fetchPath = `${WIKI_DIR}/${path}`;
-      const response = await fetch(fetchPath);
+      const response = await fetch(fetchPath, { cache: 'no-cache' });
       if (response.ok) {
         appState.pages[path] = await response.text();
       }
