@@ -71,6 +71,7 @@ function toggleTheme() {
   document.documentElement.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
   updateThemeIcon(newTheme);
+  updateGiscusTheme(newTheme);
 }
 
 function updateThemeIcon(theme) {
@@ -517,8 +518,18 @@ function renderContent(route, rawMd) {
   
   htmlView += `<div class="markdown-body">${safeHtml}</div>`;
   
+  // Inject Giscus comment board at the bottom of non-homepage articles
+  if (route !== 'index.md') {
+    htmlView += `
+      <div id="giscusContainer" style="margin-top: 60px; border-top: 1px solid var(--border-color); padding-top: 40px;"></div>
+    `;
+  }
+  
   // 6. Push to page view
   contentArea.innerHTML = htmlView;
+  
+  // 6b. Dynamic load Giscus comment board
+  loadGiscus(route);
   
   // 7. Resolve relative links inside rendered body to hash links
   const renderedLinks = contentArea.querySelectorAll('.markdown-body a');
@@ -741,3 +752,49 @@ window.navigateSPA = function(path) {
   document.getElementById('searchClearBtn').style.display = 'none';
   document.getElementById('searchResults').style.display = 'none';
 };
+
+// Dynamic Giscus Comment System Loader
+function loadGiscus(route) {
+  const container = document.getElementById('giscusContainer');
+  if (!container) return;
+  container.innerHTML = ''; // Clear previous board
+  
+  if (route === 'index.md') return;
+
+  const script = document.createElement('script');
+  script.src = 'https://giscus.app/client.js';
+  script.setAttribute('data-repo', 'dinoyee/dinoyee.github.io');
+  script.setAttribute('data-repo-id', 'R_kgDOSR_3uw');
+  script.setAttribute('data-category', 'General');
+  script.setAttribute('data-category-id', 'DIC_kwDOSR_3u84C95G-');
+  
+  // Map discussions to unique wiki route filenames to keep threads completely isolated
+  script.setAttribute('data-mapping', 'specific');
+  script.setAttribute('data-term', route);
+  
+  script.setAttribute('data-strict', '0');
+  script.setAttribute('data-reactions-enabled', '1');
+  script.setAttribute('data-emit-metadata', '0');
+  script.setAttribute('data-input-position', 'bottom');
+  
+  // Sync Giscus visual theme with current site settings
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  script.setAttribute('data-theme', currentTheme === 'dark' ? 'dark' : 'light');
+  
+  script.setAttribute('data-lang', 'zh-TW');
+  script.setAttribute('crossorigin', 'anonymous');
+  script.async = true;
+  
+  container.appendChild(script);
+}
+
+// Seamless dynamic theme switching without reloading Giscus iframe
+function updateGiscusTheme(theme) {
+  const iframe = document.querySelector('iframe.giscus-frame');
+  if (!iframe) return;
+  const giscusTheme = theme === 'dark' ? 'dark' : 'light';
+  iframe.contentWindow.postMessage(
+    { giscus: { setConfig: { theme: giscusTheme } } },
+    'https://giscus.app'
+  );
+}
