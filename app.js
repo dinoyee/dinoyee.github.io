@@ -545,6 +545,9 @@ function renderContent(route, rawMd) {
   // 8. Re-apply syntax highlighting via Prism
   Prism.highlightAll();
   
+  // 8b. Enhance code blocks with custom headers and copy-to-clipboard buttons
+  enhanceCodeBlocks();
+  
   // 9. Update top bar breadcrumbs
   updateBreadcrumbs(route, metadata?.title);
   
@@ -797,4 +800,70 @@ function updateGiscusTheme(theme) {
     { giscus: { setConfig: { theme: giscusTheme } } },
     'https://giscus.app'
   );
+}
+
+// Dynamic Premium Code Block Enhancer (adds header bar and copy button)
+function enhanceCodeBlocks() {
+  const contentArea = document.getElementById('contentArea');
+  if (!contentArea) return;
+  
+  const preElements = contentArea.querySelectorAll('.markdown-body pre');
+  preElements.forEach(pre => {
+    // 1. Get the code tag inside pre
+    const code = pre.querySelector('code');
+    if (!code) return;
+    
+    // 2. Identify language from class (e.g. language-kotlin)
+    let lang = 'Code';
+    const classes = code.className.split(' ');
+    const langClass = classes.find(c => c.startsWith('language-'));
+    if (langClass) {
+      const rawLang = langClass.replace('language-', '');
+      // Format language name nicely
+      if (rawLang === 'kotlin') lang = 'Kotlin';
+      else if (rawLang === 'dart') lang = 'Dart';
+      else if (rawLang === 'python') lang = 'Python';
+      else if (rawLang === 'yaml') lang = 'YAML';
+      else if (rawLang === 'bash') lang = 'Bash';
+      else if (rawLang === 'javascript' || rawLang === 'js') lang = 'JavaScript';
+      else if (rawLang === 'html') lang = 'HTML';
+      else if (rawLang === 'css') lang = 'CSS';
+      else if (rawLang === 'java') lang = 'Java';
+      else if (rawLang === 'swift') lang = 'Swift';
+      else lang = rawLang.toUpperCase();
+    }
+    
+    // 3. Create code-block wrapper if not already wrapped
+    if (pre.parentNode && pre.parentNode.classList.contains('code-block-wrapper')) return;
+    
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block-wrapper';
+    
+    // 4. Create Header Bar
+    const header = document.createElement('div');
+    header.className = 'code-block-header';
+    header.innerHTML = `
+      <span class="code-block-lang">${lang}</span>
+      <button class="code-block-copy-btn"><i class="fa-regular fa-copy"></i> 複製</button>
+    `;
+    
+    // 5. Insert wrapper into DOM
+    pre.parentNode.insertBefore(wrapper, pre);
+    wrapper.appendChild(header);
+    wrapper.appendChild(pre);
+    
+    // 6. Setup Copy Button Event
+    const copyBtn = header.querySelector('.code-block-copy-btn');
+    copyBtn.addEventListener('click', () => {
+      const codeText = code.textContent;
+      navigator.clipboard.writeText(codeText).then(() => {
+        copyBtn.innerHTML = '<i class="fa-solid fa-check" style="color: #10b981;"></i> <span style="color: #10b981;">已複製</span>';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i> 複製';
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    });
+  });
 }
